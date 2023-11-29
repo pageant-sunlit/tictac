@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class SimpleQuiz {
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Simple Quiz!");
+
+        // Question 1
+        System.out.println("Question 1: What is the capital of France?");
+        String answer1 = getUserInput();
+
+        // Question 2
+        System.out.println("Question 2: How many continents are there?");
+        int answer2 = getNumericInput();
+
+        // Check answers
+        checkAnswer("Paris", answer1, "The capital of France is Paris. ", "Incorrect! ");
+
+        if (answer2 == 7) {
+            System.out.println("Correct! There are 7 continents.");
+        } else {
+            System.out.println("Incorrect! There are 7 continents.");
+        }
+    }
+
+    private static String getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    private static int getNumericInput() {
+        Scanner scanner = new Scanner(System.in);
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.next(); // Consume the invalid input
+        }
+        return scanner.nextInt();
+    }
+
+    private static void checkAnswer(String correctAnswer, String userAnswer, String correctMessage, String incorrectMessage) {
+        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+            System.out.println(correctMessage);
+        } else {
+            System.out.println(incorrectMessage);
+        }
+    }
+}
